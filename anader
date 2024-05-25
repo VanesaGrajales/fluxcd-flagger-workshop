@@ -1,0 +1,10 @@
+export GITHUB_USER=vanesagrajales
+sed -i "s/angrajales/$GITHUB_USER/g" ./clusters/minikube/flux-system/gotk-sync.yaml
+git add -A
+git commit -m "Change github user"
+git push
+
+kubectl create ns dev
+kubectl create ns qa
+kubectl label ns dev istio-injection=enabled
+kubectl label ns qa istio-injection=enabled
